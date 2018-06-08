@@ -7,6 +7,9 @@ import { connect } from 'react-redux'
 // Handle Initial Data Action Creator
 import { handleInitialData } from '../actions/shared'
 
+// Components
+import Login from './Login'
+
 class App extends Component {
 
 	componentDidMount() {
@@ -15,8 +18,8 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        Hello World
+      <div class='container'>
+        <Login />
       </div>
     );
   }
