@@ -50,3 +50,8 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.login-error {
+  margin: 0 auto;
+  color: rgba(255,0,0,1);
+}
