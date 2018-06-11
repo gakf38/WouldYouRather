@@ -68,7 +68,7 @@ class Login extends Component {
 
 		return (
 			<div className='login'>
-				<h3 className='center'>Would You Rather...?</h3>
+				<h2 className='center'>Would You Rather...?</h2>
 				<form className='login-form' onSubmit={this.handleLogin}>
 					<input 
 						id='username-input'
