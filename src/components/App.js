@@ -9,6 +9,7 @@ import { handleInitialData } from '../actions/shared'
 
 // Components
 import Login from './Login'
+import Navbar from './Navbar'
 
 class App extends Component {
 
@@ -22,7 +23,7 @@ class App extends Component {
       {
         this.props.showLogin
         ? <Login />
-        : <div>Logged In</div>
+        : <Navbar />
       }
       </div>
     );
