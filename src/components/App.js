@@ -19,10 +19,20 @@ class App extends Component {
   render() {
     return (
       <div className='container'>
-        <Login />
+      {
+        this.props.showLogin
+        ? <Login />
+        : <div>Logged In</div>
+      }
       </div>
     );
   }
 }
 
-export default connect()(App)
+function mapStateToProps({ loginUser }) {
+  return {
+    showLogin: loginUser === null
+  }
+}
+
+export default connect(mapStateToProps)(App)
