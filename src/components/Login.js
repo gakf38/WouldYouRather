@@ -24,6 +24,16 @@ class Login extends Component {
 		}))
 	}
 
+	showHelp = (e) => {
+
+		e.preventDefault()
+
+		const { usernames } = this.props
+
+		// Display the proper usernames to be used on login
+		window.alert('Login Help:\nUse one of the following usernames to login...\n\n' + usernames.join(', '))
+	}
+
 	handleLogin = (e) => {
 
 		e.preventDefault()
@@ -32,7 +42,7 @@ class Login extends Component {
 		const { dispatch, usernames } = this.props
 
 		// Check if the given Username matches an existing User
-		if (usernames.indexOf(username) === 1) {
+		if (usernames.indexOf(username)  > -1) {
 
 			// Dispatch the LOGIN_USER action
 			dispatch(loginUser(username))
@@ -57,10 +67,11 @@ class Login extends Component {
 		const { username } = this.state
 
 		return (
-			<div className='login-form'>
+			<div className='login'>
 				<h3 className='center'>Would You Rather...?</h3>
 				<form className='login-form' onSubmit={this.handleLogin}>
 					<input 
+						id='username-input'
 						className='input' 
 						type='text' 
 						placeholder='Who are you?' 
@@ -71,7 +82,10 @@ class Login extends Component {
 						this.state.loginFail &&
 							<p className='login-error'>Invalid Username. Try again.</p>
 					}
-					<button className='btn' type='submit'>Login</button>
+					<div className='btn-login-group'>
+						<button className='btn' type='submit'>Login</button>
+						<button className='btn' type='button' onClick={this.showHelp}>Help</button>
+					</div>
 				</form>
 			</div>
 		)
