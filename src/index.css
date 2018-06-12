@@ -4,6 +4,11 @@ body {
   font-family: sans-serif;
 }
 
+hr {
+  border: 1px solid rgba(0,0,0,0.5);
+  border-top: 0px solid rgba(0,0,0,0.5);
+}
+
 .container {
   max-width: 1000px;
   margin: 0 auto;
@@ -72,6 +77,34 @@ body {
   color: rgba(255,0,0,1);
 }
 
-.navbar {
+.question {
+  width: 100%;
+  max-width: 590px;
+  margin: 0 auto;
+  padding: 0px 18px 18px 18px;
+  border: 1px solid rgba(0,0,0,.5);
+}
 
+.options {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+.options > div {
+  width: 42%;
+  max-width: 250px;
+  padding: 10px;
+  border: 1px solid rgba(0,0,0,.29);
+}
+
+.selected {
+  border: 1px solid rgba(0,100,0,1);
+  background-color: rgba(0,255,0,0.1);
+}
+
+.options > div:hover {
+  border: 1px solid rgba(0,100,0,1);
+  background-color: rgba(0,255,0,0.1);
 }
