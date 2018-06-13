@@ -9,7 +9,7 @@ import { handleInitialData } from '../actions/shared'
 
 // Components
 import Login from './Login'
-import Question from './Question'
+import QuestionList from './QuestionList'
 
 class App extends Component {
 
@@ -20,7 +20,7 @@ class App extends Component {
   render() {
     return (
       <div className='container'>
-        <Question />
+        <QuestionList />
       </div>
     );
   }

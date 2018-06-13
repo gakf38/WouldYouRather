@@ -4,25 +4,42 @@ import React, { Component } from 'react'
 // React Redux Connect function
 import { connect } from 'react-redux'
 
+// Helper Functions
+import { formatDate } from '../utils/helpers' 
+
 class Question extends Component {
 
 	render() {
+
+		const { question, loginUser } = this.props
+
+		console.log('Question', question)
+
 		return (
-			<div class='question'>
-				<h3 className='center'>Author Name</h3>
-				<hr/>
-				<h5 className='center'>Would you rather...</h5>
+			<div className='question'>
+				<h3 className='center'>Would you rather...</h3>
 				<div className='options'>
 					<div className='option-one'>
-						<p className='center'>Be a professional baseball player?</p>
+						<p className='center'>{question.optionOne.text}</p>
 					</div>
 					<div className='option-two'>
-						<p className='center'>Be a professional football player?</p>
+						<p className='center'>{question.optionTwo.text}</p>
 					</div>
 				</div>
+				<hr/>
+				<p className='center'>{question.author} at {formatDate(question.timestamp)}</p>
 			</div>
 		)
 	}
 }
 
-export default connect()(Question)
+function mapStateToProps({ questions, loginUser }, { id }) {
+	return {
+		question: questions[id],
+		optionOneSelected: questions[id].optionOne.votes.indexOf(loginUser) > -1,
+		optionTwoSelected: questions[id].optionTwo.votes.indexOf(loginUser) > -1,
+		loginUser
+	}
+}
+
+export default connect(mapStateToProps)(Question)
