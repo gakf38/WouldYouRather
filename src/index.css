@@ -96,26 +96,41 @@ li {
   width: 100%;
   max-width: 590px;
   margin: 0 auto;
-  padding: 4px 18px 0px 18px;
-  border: 1px solid rgba(0,0,0,.5);
+  padding: 10px 10px 10px 10px;
+ border: 1px solid rgba(0,0,0,.29);
 }
 
 .options {
   width: 100%;
-  margin-bottom: 18px;
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-evenly;
+  flex-flow: row nowrap;
+  justify-content: space-around;
 }
 
-.options > div {
-  width: 42%;
+.options > div.option {
+  width: 40%;
   max-width: 250px;
   padding: 10px;
   border: 1px solid rgba(0,0,0,.29);
 }
 
-.selected {
+.options > div.divider {
+  width: 4%;
+  max-width: 70px;
+  padding: 10px;
+}
+
+.details {
+  width: 25%;
+  margin: 0px auto;
+  padding: 20px 10px 5px 10px;
+}
+
+.details > p {
+  margin: 0px;
+}
+
+/*.selected {
   border: 1px solid rgba(0,100,0,1);
   background-color: rgba(0,255,0,0.1);
 }
@@ -123,4 +138,4 @@ li {
 .options > div:hover {
   border: 1px solid rgba(0,100,0,1);
   background-color: rgba(0,255,0,0.1);
-}
+}*/

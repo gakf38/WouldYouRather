@@ -9,14 +9,35 @@ import Question from './Question'
 
 class QuestionList extends Component {
 
+	state = {
+		answered: false
+	}
+	
+	toggleAnswered = (e, answered) => {
+
+		e.preventDefault()
+
+		this.setState(() => ({
+			answered
+		}))
+	}
+
+
 	render() {
 
 		return (
 			<div className ='questions-list'>
-				<h2 className='center'>Questions</h2>
+				<div className='center'>
+					<button onClick={(e) => this.toggleAnswered(e, false)}>Unanswered</button>
+					<button onClick={(e) => this.toggleAnswered(e, true)}>Answered</button>
+				</div>
 				<ul>
 				{
-					this.props.questionIds.map((id) => (
+					this.state.answered
+					? this.props.answeredQuestionIds.map((id) => (
+						<li key={id}><Question id={id}/></li>
+					))
+					: this.props.unansweredQuestionIds.map((id) => (
 						<li key={id}><Question id={id}/></li>
 					))
 				}
@@ -28,7 +49,12 @@ class QuestionList extends Component {
 
 function mapStateToProps({ questions, loginUser }) {
 	return {
-		questionIds: Object.keys(questions).sort((a,b) => questions[b].timestamp - questions[a].timestamp)
+		answeredQuestionIds: Object.keys(questions)
+								.filter((question) => (questions[question].optionOne.votes.indexOf(loginUser) > -1) || (questions[question].optionTwo.votes.indexOf(loginUser) > -1))
+								.sort((a,b) => questions[b].timestamp - questions[a].timestamp),
+		unansweredQuestionIds: Object.keys(questions)
+								.filter((question) => (questions[question].optionOne.votes.indexOf(loginUser) === -1) && (questions[question].optionTwo.votes.indexOf(loginUser) === -1))
+								.sort((a,b) => questions[b].timestamp - questions[a].timestamp)
 	}
 }
 

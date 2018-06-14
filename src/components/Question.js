@@ -4,30 +4,28 @@ import React, { Component } from 'react'
 // React Redux Connect function
 import { connect } from 'react-redux'
 
-// Helper Functions
-import { formatDate } from '../utils/helpers' 
-
 class Question extends Component {
 
 	render() {
 
 		const { question, loginUser } = this.props
 
-		console.log('Question', question)
-
 		return (
 			<div className='question'>
-				<h3 className='center'>Would you rather...</h3>
 				<div className='options'>
-					<div className='option-one'>
+					<div className='option'>
 						<p className='center'>{question.optionOne.text}</p>
 					</div>
-					<div className='option-two'>
+					<div className='divider'>
+						<p className='center'>or</p>
+					</div>
+					<div className='option'>
 						<p className='center'>{question.optionTwo.text}</p>
 					</div>
 				</div>
-				<hr/>
-				<p className='center'>{question.author} at {formatDate(question.timestamp)}</p>
+				<div className='details'>
+					<p className='center'>Details</p>
+				</div>
 			</div>
 		)
 	}
