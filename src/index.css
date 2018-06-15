@@ -161,6 +161,56 @@ li:first-child {
   margin: 0px;
 }
 
+.question-details {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.author-details {
+  width: 100%;
+  max-width: 590px;
+  margin: 0 auto;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-avatar {
+  height: 50px;
+  border-radius: 25px;
+  margin: 10px;
+}
+
+.options-details {
+  width: 100%;
+  max-width: 590px;
+  margin: 20px auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.options-details > div.option {
+  width: 40%;
+  max-width: 250px;
+  padding: 20px;
+  display: flex;
+  flex-flow: column nowrap;
+  border: 1px solid rgba(0,0,0,0.29);
+  border-radius: 5px;
+}
+
+div.option > .btn {
+  width: 75px;
+}
+
+div.option > .btn:hover {
+  border-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.01);
+  text-decoration: none;
+}
+
 /*.selected {
   border: 1px solid rgba(0,100,0,1);
   background-color: rgba(0,255,0,0.1);
