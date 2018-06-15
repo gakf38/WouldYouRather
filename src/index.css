@@ -46,12 +46,12 @@ hr {
   width: 100px;
 }
 
-.btn:hover {
+.btn-login-group > .btn:hover {
   border-color: rgba(0,0,0,.5);
   text-decoration: none;
 }
 
-.btn:focus {
+.btn-login-group > .btn:focus {
   outline: 0;
   font-weight: 700;
 }
@@ -77,27 +77,57 @@ hr {
   color: rgba(255,0,0,1);
 }
 
+.question-list {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.btn-list-group {
+  width: 100%;
+  max-width: 590px;
+  margin: 0 auto;
+  padding: 0px 10px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.btn-list-group > .btn {
+  margin: 15px 10px;
+}
+
+.btn-list-group > .btn:hover {
+  border-color: rgba(0,0,0,.75);
+  background-color: rgba(0,0,0,0.05);
+  text-decoration: none;
+}
+
+.btn-list-group > .btn:focus {
+  /*border-color: rgba(0,0,0,.75);*/
+  outline: 0;
+}
+
 ul {
   padding-left: 0;
 }
 
 li {
   list-style-type: none;
-  padding: 20px 10px;
+  padding: 20px 0px;
   text-decoration: none;
 }
 
-.question-list {
-  width: 100%;
-  margin: 0 auto;
+li:first-child {
+  padding-top: 0px;
 }
 
 .question {
   width: 100%;
   max-width: 590px;
   margin: 0 auto;
-  padding: 10px 10px 10px 10px;
- border: 1px solid rgba(0,0,0,.29);
+  padding: 20px 10px 10px 10px;
+  border: 1px solid rgba(0,0,0,.29);
+  border-radius: 5px;
 }
 
 .options {
@@ -112,6 +142,7 @@ li {
   max-width: 250px;
   padding: 10px;
   border: 1px solid rgba(0,0,0,.29);
+  border-radius: 5px;
 }
 
 .options > div.divider {

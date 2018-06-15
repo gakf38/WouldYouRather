@@ -27,10 +27,15 @@ class QuestionList extends Component {
 
 		return (
 			<div className ='questions-list'>
-				<div className='center'>
-					<button onClick={(e) => this.toggleAnswered(e, false)}>Unanswered</button>
-					<button onClick={(e) => this.toggleAnswered(e, true)}>Answered</button>
+				<div className='btn-list-group'>
+					<button className='btn' onClick={(e) => this.toggleAnswered(e, false)}>Unanswered</button>
+					<button className='btn' onClick={(e) => this.toggleAnswered(e, true)}>Answered</button>
 				</div>
+				{
+					this.state.answered === true
+					? <h3 className='center'>Answered Questions</h3>
+					: <h3 className='center'>Unanswered Questions</h3>
+				}
 				<ul>
 				{
 					this.state.answered
