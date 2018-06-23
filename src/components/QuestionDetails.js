@@ -21,13 +21,13 @@ class QuestionDetails extends Component {
 
 	render() {
 
-		const { question, optionOneSelected, optionOneVotePercentage, optionTwoSelected, optionTwoVotePercentage, loginUser } = this.props
+		const { authorImg, question, optionOneSelected, optionOneVotePercentage, optionTwoSelected, optionTwoVotePercentage, loginUser } = this.props
 
 		return (
 			<div className='question-details'>
 				<h2 className='center'>Would You Rather...?</h2>
 				<div className='author-details'>
-					<img src='https://tylermcginnis.com/would-you-rather/sarah.jpg' className='user-avatar'/>
+					<img src={authorImg} className='user-avatar'/>
 					<h3>{question.author}</h3>
 				</div>
 				{
@@ -63,11 +63,12 @@ class QuestionDetails extends Component {
 	}
 }
 
-function mapStateToProps({ questions, loginUser }, props) {
+function mapStateToProps({ questions, users, loginUser }, props) {
 
 	const { id } = props.match.params
 
 	return {
+		authorImg: users[questions[id].author].avatarURL,
 		question: questions[id],
 		optionOneSelected: questions[id].optionOne.votes.indexOf(loginUser) > -1,
 		optionOneVotePercentage: (questions[id].optionOne.votes.length / (questions[id].optionOne.votes.length + questions[id].optionTwo.votes.length)) * 100,
