@@ -1,6 +1,9 @@
 // React Library
 import React, { Component } from 'react'
 
+// React Router Library
+import { Link, withRouter } from 'react-router-dom'
+
 // React Redux Connect function
 import { connect } from 'react-redux'
 
@@ -8,7 +11,7 @@ class Question extends Component {
 
 	render() {
 
-		const { question, loginUser } = this.props
+		const { question, loginUser, id } = this.props
 
 		return (
 			<div className='question'>
@@ -23,8 +26,8 @@ class Question extends Component {
 						<p className='center'>{question.optionTwo.text}</p>
 					</div>
 				</div>
-				<div className='details'>
-					<p className='center'>Details</p>
+				<div className='details center'>
+					<Link to={`/questionDetails/${id}`}>Details</Link>
 				</div>
 			</div>
 		)
@@ -40,4 +43,4 @@ function mapStateToProps({ questions, loginUser }, { id }) {
 	}
 }
 
-export default connect(mapStateToProps)(Question)
+export default withRouter(connect(mapStateToProps)(Question))

@@ -4,6 +4,9 @@ import React, { Component } from 'react'
 // React Redux Connect function
 import { connect } from 'react-redux'
 
+// React Router Components
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+
 // Handle Initial Data Action Creator
 import { handleInitialData } from '../actions/shared'
 
@@ -20,9 +23,15 @@ class App extends Component {
 
   render() {
     return (
-      <div className='container'>
-        <QuestionDetails />
-      </div>
+      <Router>
+        <div className='container'>
+          <div>
+            <Route path='/login' exact component={Login} />
+            <Route path='/' exact component={QuestionList} />
+            <Route path='/questionDetails/:id' component={QuestionDetails} />
+          </div>
+        </div>
+      </Router>
     );
   }
 }

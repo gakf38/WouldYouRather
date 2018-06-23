@@ -5,9 +5,6 @@ import { getInitialData } from '../utils/api'
 import { receiveUsers } from './users'
 import { receiveQuestions } from './questions'
 
-// TEMPORARY
-import { loginUser } from './loginUser'
-
 // Async Action Creator for getting and sending the initial app data to the Redux Store
 export function handleInitialData() {
 	return (dispatch) => {
@@ -17,9 +14,6 @@ export function handleInitialData() {
 				// Dispatch the Initial Data Actions
 				dispatch(receiveUsers(users))
 				dispatch(receiveQuestions(questions))
-
-				// TEMPORARY 
-				dispatch(loginUser('tylermcginnis'))
 			})
 	}
 }

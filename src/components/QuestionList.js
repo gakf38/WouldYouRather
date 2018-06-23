@@ -4,6 +4,9 @@ import React, { Component } from 'react'
 // React Redux Connect function
 import { connect } from 'react-redux'
 
+// React Router Redirect Component
+import { Redirect } from 'react-router-dom'
+
 // Components
 import Question from './Question'
 
@@ -24,6 +27,11 @@ class QuestionList extends Component {
 
 
 	render() {
+
+		if ( !this.props.loginUser )
+		{
+			return <Redirect to='/login' />
+		}
 
 		return (
 			<div className ='questions-list'>
@@ -59,7 +67,8 @@ function mapStateToProps({ questions, loginUser }) {
 								.sort((a,b) => questions[b].timestamp - questions[a].timestamp),
 		unansweredQuestionIds: Object.keys(questions)
 								.filter((question) => (questions[question].optionOne.votes.indexOf(loginUser) === -1) && (questions[question].optionTwo.votes.indexOf(loginUser) === -1))
-								.sort((a,b) => questions[b].timestamp - questions[a].timestamp)
+								.sort((a,b) => questions[b].timestamp - questions[a].timestamp),
+		loginUser
 	}
 }
 

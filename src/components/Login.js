@@ -4,6 +4,9 @@ import React, { Component } from 'react'
 // React Redux Connect function
 import { connect } from 'react-redux'
 
+// React Router Redirect Component
+import { Redirect } from 'react-router-dom'
+
 // loginUser Function
 import { loginUser } from '../actions/loginUser'
 
@@ -50,14 +53,14 @@ class Login extends Component {
 			// Reset the component State
 			this.setState({
 				username: '',
-				loginFail: false
+				loginFail: false,
 			})
 		}
 		else {
 			// Set the component State for a failed login
 			this.setState({
 				username: '',
-				loginFail: true
+				loginFail: true,
 			})
 		}
 	}
@@ -65,6 +68,11 @@ class Login extends Component {
 	render() {
 
 		const { username } = this.state
+
+		if (this.props.loginUser)
+		{
+			return <Redirect to='/' />
+		}
 
 		return (
 			<div className='login'>
@@ -93,9 +101,10 @@ class Login extends Component {
 }
 
 // Map the usernames to the Component props
-function mapStateToProps({ users }) {
+function mapStateToProps({ users, loginUser }) {
 	return {
-		usernames: Object.keys(users)
+		usernames: Object.keys(users),
+		loginUser
 	}
 }
 
