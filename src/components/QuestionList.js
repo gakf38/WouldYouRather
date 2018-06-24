@@ -30,7 +30,12 @@ class QuestionList extends Component {
 
 		if ( !this.props.loginUser )
 		{
-			return <Redirect to='/login' />
+			return <Redirect to={{
+				pathname: '/login',
+				state: {
+					returnPath: '/'
+				}
+			}} />
 		}
 
 		return (

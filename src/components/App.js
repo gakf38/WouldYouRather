@@ -5,15 +5,17 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 // React Router Components
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
 // Handle Initial Data Action Creator
 import { handleInitialData } from '../actions/shared'
 
 // Components
+import Nav from './Nav'
 import Login from './Login'
 import QuestionList from './QuestionList'
 import QuestionDetails from './QuestionDetails'
+import Leaderboard from './Leaderboard'
 
 class App extends Component {
 
@@ -24,11 +26,18 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className='container'>
-          <div>
-            <Route path='/login' exact component={Login} />
-            <Route path='/' exact component={QuestionList} />
-            <Route path='/questionDetails/:id' component={QuestionDetails} />
+        <div>
+          {
+            !this.props.showLogin &&
+            <Nav />
+          }
+          <div className='container'>
+            <div>
+              <Route path='/login' exact component={Login} />
+              <Route path='/' exact component={QuestionList} />
+              <Route path='/questionDetails/:id' component={QuestionDetails} />
+              <Route path='/leaderboard' exact component={Leaderboard} />
+            </div>
           </div>
         </div>
       </Router>
@@ -37,6 +46,7 @@ class App extends Component {
 }
 
 function mapStateToProps({ loginUser }) {
+
   return {
     showLogin: loginUser === null
   }

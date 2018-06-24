@@ -12,7 +12,11 @@ hr {
 .container {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 10px;
+  padding: 0px 10px 10px 10px;
+}
+
+.center {
+  text-align: center;
 }
 
 .input {
@@ -54,10 +58,6 @@ hr {
 .btn-login-group > .btn:focus {
   outline: 0;
   font-weight: 700;
-}
-
-.center {
-  text-align: center;
 }
 
 .login {
@@ -103,8 +103,36 @@ hr {
 }
 
 .btn-list-group > .btn:focus {
-  /*border-color: rgba(0,0,0,.75);*/
   outline: 0;
+}
+
+.nav {
+  position: sticky;
+  top: 0px;
+  z-index: 1000;
+  width: 100%;
+  margin: 0 auto;
+  background-color: rgba(235,235,235,1);
+}
+
+.nav ul {
+  margin: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.nav li {
+  padding: 20px;
+}
+
+.nav li:first-child {
+  padding-left: 0;
+}
+
+.nav hr {
+  margin: 0px;
 }
 
 ul {
@@ -117,7 +145,7 @@ li {
   text-decoration: none;
 }
 
-li:first-child {
+.questions-list li:first-child {
   padding-top: 0px;
 }
 
@@ -207,12 +235,21 @@ div.option > .btn:hover {
   text-decoration: none;
 }
 
-/*.selected {
-  border: 1px solid rgba(0,100,0,1);
-  background-color: rgba(0,255,0,0.1);
+.leaderboard {
+  width: 100%;
+  margin: 0 auto;
 }
 
-.options > div:hover {
-  border: 1px solid rgba(0,100,0,1);
-  background-color: rgba(0,255,0,0.1);
-}*/
+.leaderboard-table {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.leaderboard-table td, th {
+  width: 25%;
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}

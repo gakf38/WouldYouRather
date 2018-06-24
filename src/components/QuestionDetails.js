@@ -7,6 +7,16 @@ import { connect } from 'react-redux'
 // React Router Redirect Component
 import { Redirect } from 'react-router-dom'
 
+/*
+
+	Remaining Todos:
+
+	1. incorporate vote casting logic
+
+	2. incorporate display logic based on voted option (on answered questions)
+
+*/
+
 class QuestionDetails extends Component {
 
 	state = {}
@@ -21,7 +31,26 @@ class QuestionDetails extends Component {
 
 	render() {
 
-		const { authorImg, question, optionOneSelected, optionOneVotePercentage, optionTwoSelected, optionTwoVotePercentage, loginUser } = this.props
+		const { 
+			id,
+			authorImg, 
+			question, 
+			optionOneSelected, 
+			optionOneVotePercentage, 
+			optionTwoSelected, 
+			optionTwoVotePercentage, 
+			loginUser 
+		} = this.props
+
+		if ( !loginUser ) 
+		{
+			return <Redirect to={{
+				pathname: '/login',
+				state: {
+					returnPath: '/questionDetails/' + id
+				}
+			}} />
+		}
 
 		return (
 			<div className='question-details'>
@@ -50,11 +79,19 @@ class QuestionDetails extends Component {
 							<p className='center'>{question.optionOne.text}</p>
 							<p className='center'>Vote Count: {question.optionOne.votes.length}</p>
 							<p className='center'>Vote Percentage: {optionOneVotePercentage}%</p>
+							{
+								optionOneSelected &&
+									<p className='center'>Your Selection</p>
+							}
 						</div>
 						<div className='option'>
 							<p className='center'>{question.optionTwo.text}</p>
 							<p className='center'>Vote Count: {question.optionTwo.votes.length}</p>
 							<p className='center'>Vote Percentage: {optionTwoVotePercentage}%</p>
+							{
+								optionTwoSelected &&
+									<p className='center'>Your Selection</p>
+							}
 						</div>
 					</div>
 				}
@@ -68,12 +105,13 @@ function mapStateToProps({ questions, users, loginUser }, props) {
 	const { id } = props.match.params
 
 	return {
-		authorImg: users[questions[id].author].avatarURL,
-		question: questions[id],
-		optionOneSelected: questions[id].optionOne.votes.indexOf(loginUser) > -1,
-		optionOneVotePercentage: (questions[id].optionOne.votes.length / (questions[id].optionOne.votes.length + questions[id].optionTwo.votes.length)) * 100,
-		optionTwoSelected: questions[id].optionTwo.votes.indexOf(loginUser) > -1,
-		optionTwoVotePercentage: (questions[id].optionTwo.votes.length / (questions[id].optionOne.votes.length + questions[id].optionTwo.votes.length)) * 100,
+		id,
+		authorImg: questions[id] ? users[questions[id].author].avatarURL : null,
+		question: questions[id] ? questions[id] : null,
+		optionOneSelected: questions[id] ? questions[id].optionOne.votes.indexOf(loginUser) > -1 : null,
+		optionOneVotePercentage: questions[id] ? (questions[id].optionOne.votes.length / (questions[id].optionOne.votes.length + questions[id].optionTwo.votes.length)) * 100 : null,
+		optionTwoSelected: questions[id] ? questions[id].optionTwo.votes.indexOf(loginUser) > -1 : null,
+		optionTwoVotePercentage: questions[id] ? (questions[id].optionTwo.votes.length / (questions[id].optionOne.votes.length + questions[id].optionTwo.votes.length)) * 100 : null,
 		loginUser
 	}
 

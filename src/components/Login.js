@@ -71,7 +71,7 @@ class Login extends Component {
 
 		if (this.props.loginUser)
 		{
-			return <Redirect to='/' />
+			return <Redirect to={this.props.location.state.returnPath} />
 		}
 
 		return (
