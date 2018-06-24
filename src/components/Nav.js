@@ -22,7 +22,7 @@ class Nav extends Component {
           </li>
           <li>
             <NavLink to='/newQuestion' exact activeClassName='active'>
-              New Question
+              New Questions
             </NavLink>
           </li>
         </ul>

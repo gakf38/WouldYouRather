@@ -24,28 +24,24 @@ class Leaderboard extends Component {
 		return (
 			<div className='leaderboard'>
 				<h3 className='center'>Leaderboard</h3>
-				<table className='leaderboard-table'>
-					<thead>
-						<tr>
-							<th>Ranking</th>
-							<th>User</th>
-							<th>Questions Asked</th>
-							<th>Questions Answered</th>
-						</tr>
-					</thead>
-					<tbody>
-						{
-							this.props.users.map((user, index) => (
-								<tr key={user.id}>
-									<td>{index + 1}</td>
-									<td>{user.name}</td>
-									<td>{user.questions.length}</td>
-									<td>{Object.keys(user.answers).length}</td>
-								</tr>
-							))
-						}
-					</tbody>
-				</table>
+				{
+					this.props.users.map((user, index) => (
+						<div className='leaderboard-row'>
+							<div className='leaderboard-details'>
+								<div className='user-details'>
+									<img src={user.avatarURL} className='user-avatar' />
+									<h3>{index + 1}. {user.name}</h3>
+								</div>
+								<div className='user-stat'>
+									<p><b>Questions Asked:</b> {user.questions.length}</p>
+								</div>
+								<div className='user-stat'>
+									<p><b>Questions Answered:</b> {Object.keys(user.answers).length}</p>
+								</div>
+							</div>
+						</div>
+					))
+				}
 			</div>
 		)
 	}
