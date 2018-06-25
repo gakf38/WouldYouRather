@@ -16,6 +16,7 @@ import Login from './Login'
 import QuestionList from './QuestionList'
 import QuestionDetails from './QuestionDetails'
 import Leaderboard from './Leaderboard'
+import NewQuestion from './NewQuestion'
 
 class App extends Component {
 
@@ -37,6 +38,7 @@ class App extends Component {
               <Route path='/' exact component={QuestionList} />
               <Route path='/questionDetails/:id' component={QuestionDetails} />
               <Route path='/leaderboard' exact component={Leaderboard} />
+              <Route path='/add' exact component={NewQuestion} />
             </div>
           </div>
         </div>

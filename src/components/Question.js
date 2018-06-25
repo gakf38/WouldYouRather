@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 
 // React Router Library
-import { Link, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 // React Redux Connect function
 import { connect } from 'react-redux'
@@ -43,4 +43,4 @@ function mapStateToProps({ questions, loginUser }, { id }) {
 	}
 }
 
-export default withRouter(connect(mapStateToProps)(Question))
+export default connect(mapStateToProps)(Question)
