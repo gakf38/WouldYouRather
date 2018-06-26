@@ -10,8 +10,8 @@ import { Redirect } from 'react-router-dom'
 class NewQuestion extends Component {
 
 	state = {
-		'optionOne': null,
-		'optionTwo': null
+		'optionOne': '',
+		'optionTwo': ''
 	}
 
 	handleOptionOneChange = (e) => {
@@ -34,6 +34,9 @@ class NewQuestion extends Component {
 
 	addQuestion = (e, optionOne, optionTwo) => {
 
+		e.preventDefault()
+
+		// Dispatch the Add Question Action
 	}
 
 	render() {
@@ -53,7 +56,7 @@ class NewQuestion extends Component {
 		return (
 			<div className='add-question'>
 				<h3 className='center'>Add a Question</h3>
-				<form className='add-question-form' onSubmit={this.addQuestion}>
+				<form className='add-question-form' onSubmit={(e) => this.addQuestion(e, optionOne, optionTwo)}>
 					<input 
 						id='optionOne' 
 						className='input' 
