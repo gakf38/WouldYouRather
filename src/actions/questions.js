@@ -21,11 +21,12 @@ function addQuestion(question) {
 	}
 }
 
-// Add New Question Async Action Creator Function
+// Add New Question Async Action Creator Function (uses the Thunk middleware)
 export function handleAddNewQuestion(optionOneText, optionTwoText) {
 	return (dispatch, getState) => {
 		
 		const { loginUser } = getState()
+
 
 		return addNewQuestion({ optionOneText, optionTwoText, author: loginUser })
 				.then((question) => dispatch(addQuestion(question)))
