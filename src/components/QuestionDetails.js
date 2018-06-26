@@ -56,7 +56,7 @@ class QuestionDetails extends Component {
 			<div className='question-details'>
 				<h2 className='center'>Would You Rather...?</h2>
 				<div className='author-details'>
-					<img src={authorImg} className='user-avatar'/>
+					<img src={authorImg} alt='Author Avatar'className='user-avatar'/>
 					<h3>{question.author}</h3>
 				</div>
 				{

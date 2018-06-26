@@ -7,6 +7,9 @@ import { connect } from 'react-redux'
 // React Router Redirect Component
 import { Redirect } from 'react-router-dom'
 
+// handleAddNewQuestion Function
+import { handleAddNewQuestion } from '../actions/questions'
+
 class NewQuestion extends Component {
 
 	state = {
@@ -36,7 +39,14 @@ class NewQuestion extends Component {
 
 		e.preventDefault()
 
-		// Dispatch the Add Question Action
+		const { dispatch } = this.props
+
+		dispatch(handleAddNewQuestion(optionOne, optionTwo))
+
+		this.setState({
+			'optionOne': '',
+			'optionTwo': ''
+		})
 	}
 
 	render() {

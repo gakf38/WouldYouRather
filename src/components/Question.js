@@ -11,7 +11,7 @@ class Question extends Component {
 
 	render() {
 
-		const { question, loginUser, id } = this.props
+		const { question, id } = this.props
 
 		return (
 			<div className='question'>
@@ -38,8 +38,7 @@ function mapStateToProps({ questions, loginUser }, { id }) {
 	return {
 		question: questions[id],
 		optionOneSelected: questions[id].optionOne.votes.indexOf(loginUser) > -1,
-		optionTwoSelected: questions[id].optionTwo.votes.indexOf(loginUser) > -1,
-		loginUser
+		optionTwoSelected: questions[id].optionTwo.votes.indexOf(loginUser) > -1
 	}
 }
 

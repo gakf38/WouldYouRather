@@ -29,7 +29,7 @@ class Leaderboard extends Component {
 						<div className='leaderboard-row'>
 							<div className='leaderboard-details'>
 								<div className='user-details'>
-									<img src={user.avatarURL} className='user-avatar' />
+									<img src={user.avatarURL} alt='User Avatar' className='user-avatar' />
 									<h3>{index + 1}. {user.name}</h3>
 								</div>
 								<div className='user-stat'>
