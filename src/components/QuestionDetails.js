@@ -7,26 +7,18 @@ import { connect } from 'react-redux'
 // React Router Redirect Component
 import { Redirect } from 'react-router-dom'
 
-/*
-
-	Remaining Todos:
-
-	1. incorporate vote casting logic
-
-	2. incorporate display logic based on voted option (on answered questions)
-
-*/
+// handleAddNewQuestion Function
+import { handleSaveAnswer } from '../actions/shared'
 
 class QuestionDetails extends Component {
 
-	state = {}
-
-	handleVote = (e, option) => {
+	handleVote = (e, qid, answer) => {
 
 		e.preventDefault()
 
-		// TODO: Cast the vote for the given option
+		const { dispatch } = this.props
 
+		dispatch(handleSaveAnswer(qid, answer))
 	}
 
 	render() {
@@ -64,11 +56,11 @@ class QuestionDetails extends Component {
 					<div className='options-details'>
 						<div className='option'>
 							<p className='center'>{question.optionOne.text}</p>
-							<button className='btn' onClick={(e) => this.handleVote(e, 1)}>Vote</button>
+							<button className='btn' onClick={(e) => this.handleVote(e, id, 'optionOne')}>Vote</button>
 						</div>
 						<div className='option'>
 							<p className='center'>{question.optionTwo.text}</p>
-							<button className='btn' onClick={(e) => this.handleVote(e, 2)}>Vote</button>
+							<button className='btn' onClick={(e) => this.handleVote(e, id, 'optionTwo')}>Vote</button>
 						</div>
 					</div>
 				}

@@ -1,5 +1,5 @@
 // Users Action Types
-import { RECEIVE_USERS } from '../actions/users'
+import { RECEIVE_USERS, SAVE_QUESTION } from '../actions/users'
 
 // Users Reducer Function
 export default function users (state = {}, action) {
@@ -10,6 +10,18 @@ export default function users (state = {}, action) {
 			return {
 				...state,
 				...action.users
+			}
+
+		case SAVE_QUESTION :
+			return {
+				...state,
+		        [action.loginUser]: {
+		        	...state[action.loginUser],
+		          	answers: {
+		            	...state[action.loginUser].answers,
+		            	[action.qid]: action.answer
+		          	}
+		        }
 			}
 
 		default :

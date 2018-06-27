@@ -1,5 +1,5 @@
 // Questions Action Types
-import { RECEIVE_QUESTIONS, ADD_QUESTION } from '../actions/questions'
+import { RECEIVE_QUESTIONS, ADD_QUESTION, SAVE_QUESTION } from '../actions/questions'
 
 // Questions Reducer Function
 export default function questions (state = {}, action) {
@@ -16,6 +16,18 @@ export default function questions (state = {}, action) {
 			return {
 				...state,
 				[action.question.id]: action.question
+			}
+
+		case SAVE_QUESTION :
+			return {
+				...state,
+				[action.qid]: {
+					...state[action.qid],
+					[action.answer]: {
+						...state[action.qid][action.answer],
+						votes: state[action.qid][action.answer].votes.concat([action.loginUser])
+					}
+				}
 			}
 
 		default :
