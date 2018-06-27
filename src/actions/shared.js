@@ -1,6 +1,9 @@
 // API Functions
 import { getInitialData } from '../utils/api'
 
+// React Redux Loading Action Creators
+import { showLoading, hideLoading } from 'react-redux-loading'
+
 // Action Creators
 import { receiveUsers, handleSaveAnswerUser } from './users'
 import { receiveQuestions, handleSaveAnswerQuestion } from './questions'
@@ -21,7 +24,13 @@ export function handleInitialData() {
 // Async Action Creator for dispatching the actions related to a user voting on a question
 export function handleSaveAnswer(qid, answer) {
 	return (dispatch) => {
+		
+		dispatch(showLoading())
+
 		dispatch(handleSaveAnswerQuestion(qid, answer))
 		dispatch(handleSaveAnswerUser(qid, answer))
+			.then(() => 
+				dispatch(hideLoading())
+			)
 	}
 }
