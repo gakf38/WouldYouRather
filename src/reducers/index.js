@@ -6,9 +6,13 @@ import users from './users'
 import questions from './questions'
 import loginUser from './loginUser'
 
+// React Redux Loading Bar
+import { loadingBarReducer } from 'react-redux-loading'
+
 // Root Reducer Function
 export default combineReducers({
 	users,
 	questions,
-	loginUser
+	loginUser,
+	loadingBar: loadingBarReducer
 })

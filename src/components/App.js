@@ -1,11 +1,14 @@
 // React Library
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
 // React Redux Connect function
 import { connect } from 'react-redux'
 
 // React Router Components
 import { BrowserRouter as Router, Route } from 'react-router-dom'
+
+// React Redux Loading Component
+import LoadingBar from 'react-redux-loading'
 
 // Handle Initial Data Action Creator
 import { handleInitialData } from '../actions/shared'
@@ -27,11 +30,12 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <Fragment>
           {
             !this.props.showLogin &&
             <Nav />
           }
+          <LoadingBar style={{ backgroundColor: 'rgba(0,0,0,0.5)', height: '1px' }} />
           <div className='container'>
             <div>
               <Route path='/login' exact component={Login} />
@@ -41,7 +45,7 @@ class App extends Component {
               <Route path='/add' exact component={NewQuestion} />
             </div>
           </div>
-        </div>
+        </Fragment>
       </Router>
     );
   }

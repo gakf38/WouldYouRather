@@ -14,7 +14,8 @@ class NewQuestion extends Component {
 
 	state = {
 		'optionOne': '',
-		'optionTwo': ''
+		'optionTwo': '',
+		'toHome': false
 	}
 
 	handleOptionOneChange = (e) => {
@@ -42,11 +43,15 @@ class NewQuestion extends Component {
 		const { dispatch } = this.props
 
 		dispatch(handleAddNewQuestion(optionOne, optionTwo))
+		.then(() => 
+			// Is there something that should be checked for setting toHome?
+			this.setState({
+				'optionOne': '',
+				'optionTwo': '',
+				'toHome': true
+			})
+		)  
 
-		this.setState({
-			'optionOne': '',
-			'optionTwo': ''
-		})
 	}
 
 	render() {
@@ -61,6 +66,11 @@ class NewQuestion extends Component {
 					returnPath: '/add'
 				}
 			}} />
+		}
+
+		if ( this.state.toHome )
+		{
+			return <Redirect to='/' />
 		}
 
 		return (

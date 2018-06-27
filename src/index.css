@@ -38,6 +38,11 @@ hr {
   position: relative;
 }
 
+.loading {
+  background-color: rgba(0,0,0,0.29);
+  height: 5px;
+}
+
 .btn-login-group {
   width: 100%;
   display: flex;

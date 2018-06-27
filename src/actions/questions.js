@@ -1,6 +1,9 @@
 // addNewQuestion API function
 import { addNewQuestion } from '../utils/api'
 
+// React Redux Loading Action Creators
+import { showLoading, hideLoading } from 'react-redux-loading'
+
 // Questions Action Types
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const ADD_QUESTION = 'ADD_QUESTION'
@@ -27,8 +30,10 @@ export function handleAddNewQuestion(optionOneText, optionTwoText) {
 		
 		const { loginUser } = getState()
 
+		dispatch(showLoading())
 
 		return addNewQuestion({ optionOneText, optionTwoText, author: loginUser })
 				.then((question) => dispatch(addQuestion(question)))
+				.then(() => dispatch(hideLoading()))
 	}
 }
