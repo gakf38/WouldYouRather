@@ -17,28 +17,6 @@ export function receiveQuestions(questions) {
 	}
 }
 
-// Add Question Action Creator Function
-function addQuestion(question) {
-	return {
-		type: ADD_QUESTION,
-		question
-	}
-}
-
-// Add New Question Async Action Creator Function (uses the Thunk middleware)
-export function handleAddNewQuestion(optionOneText, optionTwoText) {
-	return (dispatch, getState) => {
-		
-		const { loginUser } = getState()
-
-		dispatch(showLoading())
-
-		return addNewQuestion({ optionOneText, optionTwoText, author: loginUser })
-				.then((question) => dispatch(addQuestion(question)))
-				.then(() => dispatch(hideLoading()))
-	}
-}
-
 // Save Question Answer Action Creator Function
 function saveAnswer(loginUser, qid, answer) {
 	return {
@@ -46,6 +24,14 @@ function saveAnswer(loginUser, qid, answer) {
 		loginUser,
 		qid,
 		answer
+	}
+}
+
+// Add Question Action Creator Function
+function addQuestion(question) {
+	return {
+		type: ADD_QUESTION,
+		question
 	}
 }
 
@@ -58,5 +44,17 @@ export function handleSaveAnswerQuestion(qid, answer) {
 		return saveQuestionAnswer({ authedUser: loginUser, qid, answer })
 				.then(() => dispatch(saveAnswer(loginUser, qid, answer)))
 
+	}
+}
+
+// Add New Question Async Action Creator Function (uses the Thunk middleware)
+export function handleAddNewQuestion(optionOneText, optionTwoText) {
+	return (dispatch, getState) => {
+		
+		const { loginUser } = getState()
+
+		return addNewQuestion({ optionOneText, optionTwoText, author: loginUser })
+				.then((question) => dispatch(addQuestion(question)))
+				
 	}
 }

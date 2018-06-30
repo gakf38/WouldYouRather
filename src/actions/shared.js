@@ -5,8 +5,8 @@ import { getInitialData } from '../utils/api'
 import { showLoading, hideLoading } from 'react-redux-loading'
 
 // Action Creators
-import { receiveUsers, handleSaveAnswerUser } from './users'
-import { receiveQuestions, handleSaveAnswerQuestion } from './questions'
+import { receiveUsers, addQuestion, handleSaveAnswerUser } from './users'
+import { receiveQuestions, handleSaveAnswerQuestion, handleAddNewQuestion } from './questions'
 
 // Async Action Creator for getting and sending the initial app data to the Redux Store
 export function handleInitialData() {
@@ -31,6 +31,21 @@ export function handleSaveAnswer(qid, answer) {
 		dispatch(handleSaveAnswerUser(qid, answer))
 			.then(() => 
 				dispatch(hideLoading())
+			)
+	}
+}
+
+// Async Action Creator for dispatching the actions related to a user creating a question
+export function handleAddQuestion(optionOneText, optionTwoText, loginUser) {
+	return (dispatch) => {
+
+		dispatch(showLoading())
+
+		return dispatch(handleAddNewQuestion(optionOneText, optionTwoText))
+			.then((question) => {
+					dispatch(addQuestion(loginUser, question.question.id))
+					dispatch(hideLoading())
+				}
 			)
 	}
 }

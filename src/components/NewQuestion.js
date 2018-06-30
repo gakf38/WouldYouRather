@@ -7,8 +7,8 @@ import { connect } from 'react-redux'
 // React Router Redirect Component
 import { Redirect } from 'react-router-dom'
 
-// handleAddNewQuestion Function
-import { handleAddNewQuestion } from '../actions/questions'
+// handleNewQuestion Function
+import { handleAddQuestion } from '../actions/shared'
 
 class NewQuestion extends Component {
 
@@ -36,13 +36,13 @@ class NewQuestion extends Component {
 		}))
 	}
 
-	addQuestion = (e, optionOne, optionTwo) => {
+	handleAddQuestion = (e, optionOne, optionTwo) => {
 
 		e.preventDefault()
 
-		const { dispatch } = this.props
+		const { dispatch, loginUser } = this.props
 
-		dispatch(handleAddNewQuestion(optionOne, optionTwo))
+		dispatch(handleAddQuestion(optionOne, optionTwo, loginUser))
 		.then(() => 
 			// Is there something that should be checked for setting toHome?
 			this.setState({
@@ -50,8 +50,7 @@ class NewQuestion extends Component {
 				'optionTwo': '',
 				'toHome': true
 			})
-		)  
-
+		)
 	}
 
 	render() {
@@ -76,7 +75,7 @@ class NewQuestion extends Component {
 		return (
 			<div className='add-question'>
 				<h3 className='center'>Add a Question</h3>
-				<form className='add-question-form' onSubmit={(e) => this.addQuestion(e, optionOne, optionTwo)}>
+				<form className='add-question-form' onSubmit={(e) => this.handleAddQuestion(e, optionOne, optionTwo)}>
 					<input 
 						id='optionOne' 
 						className='input' 
