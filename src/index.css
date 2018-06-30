@@ -125,27 +125,30 @@ hr {
   padding: 0px 10px 0px 10px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   text-decoration: none;
 }
 
 .nav li {
   width: 100%;
-  max-width: 150px;
-  padding: 20px 10px 20px 10px;
+  max-width: 125px;
+  padding: 20px 5px 20px 5px;
   text-align: center;
 }
 
 .nav li.user-details {
+  margin-left: auto;
   padding: 0px 10px 0px 10px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 }
 
-.nav li.user-details p {
+.nav-user-avatar {
+  height: 35px;
+  border-radius: 25px;
   margin: 0px;
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 .nav hr {

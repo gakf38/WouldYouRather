@@ -42,7 +42,7 @@ class Nav extends Component {
             </NavLink>
           </li>
           <li className='user-details'>
-            <p>{this.props.loginUser}</p>
+            <img src={this.props.avatarURL} className='nav-user-avatar'/>
             <span onClick={this.logoutUser}><Logout size={30}/></span>
           </li>
         </ul>
@@ -52,9 +52,9 @@ class Nav extends Component {
   }
 }
 
-function mapStateToProps({ loginUser }) {
+function mapStateToProps({ users, loginUser }) {
   return {
-    loginUser
+    avatarURL: users[loginUser].avatarURL
   }
 }
 
