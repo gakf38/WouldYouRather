@@ -1,5 +1,5 @@
 // Login Action Types
-import { LOGIN_USER } from '../actions/loginUser'
+import { LOGIN_USER, LOGOUT_USER } from '../actions/loginUser'
 
 // Login Reducer Function
 export default function loginUser (state=null, action) {
@@ -8,6 +8,9 @@ export default function loginUser (state=null, action) {
 
 		case LOGIN_USER :
 			return action.user
+
+		case LOGOUT_USER :
+			return null
 
 		default :
 			return state
