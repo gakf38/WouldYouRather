@@ -27,7 +27,7 @@ class Question extends Component {
 					</div>
 				</div>
 				<div className='details center'>
-					<Link to={`/questionDetails/${id}`}>Details</Link>
+					<Link to={`/questions/${id}`}>Details</Link>
 				</div>
 			</div>
 		)

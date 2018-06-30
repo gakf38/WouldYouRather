@@ -39,9 +39,20 @@ class QuestionDetails extends Component {
 			return <Redirect to={{
 				pathname: '/login',
 				state: {
-					returnPath: '/questionDetails/' + id
+					returnPath: '/questions/' + id
 				}
 			}} />
+		}
+
+		if ( !question )
+		{
+			return (
+				<div className='question-not-found-error'>
+					<h1 className='center'>404 Error</h1>
+					<p className='center'>Oops... It appears the question you are trying to reach doesn't exist</p>
+					<p className='center'>Use the links above to view the question list or add the question to the list</p>
+				</div>
+			)
 		}
 
 		return (
