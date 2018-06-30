@@ -1,9 +1,6 @@
 // Question API functions
 import { addNewQuestion, saveQuestionAnswer } from '../utils/api'
 
-// React Redux Loading Action Creators
-import { showLoading, hideLoading } from 'react-redux-loading'
-
 // Questions Action Types
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const ADD_QUESTION = 'ADD_QUESTION'

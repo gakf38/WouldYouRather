@@ -4,7 +4,7 @@ import { saveQuestionAnswer } from '../utils/api'
 // Users Action Types
 export const RECEIVE_USERS = 'RECEIVE_USERS'
 export const SAVE_QUESTION = 'SAVE_QUESTION'
-export const ADD_QUESTION = 'ADD_QUESTION_USER'
+export const ADD_QUESTION = 'ADD_QUESTION_TO_USER'
 
 // Receive Users Action Creator
 export function receiveUsers(users) {

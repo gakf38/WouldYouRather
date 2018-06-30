@@ -26,7 +26,7 @@ class Leaderboard extends Component {
 				<h3 className='center'>Leaderboard</h3>
 				{
 					this.props.users.map((user, index) => (
-						<div className='leaderboard-row'>
+						<div key={user.id} className='leaderboard-row'>
 							<div className='leaderboard-details'>
 								<div className='user-details'>
 									<img src={user.avatarURL} alt='User Avatar' className='user-avatar' />
